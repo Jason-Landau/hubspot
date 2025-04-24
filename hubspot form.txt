@@ -1,0 +1,97 @@
+https://www.motionrxhealth.com/
+alphaprojectphyzio.com Matthew 11-29-22
+mvmtgb.com Trevor 7-7-22
+puckettpt.com Tim 08-23-22
+
+listener***********
+https://nettlesnet.com/track-hubspot-forms-with-google-tag-manager-analytics/
+// this has more info. Setup listener and variable
+
+https://medium.com/@dillonjones/the-easiest-way-to-setup-hubspot-form-tracking-in-google-analytics-a8ad9ab1fc4d
+
+<script type="text/javascript">
+  window.addEventListener("message", function(event) {
+    if(event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmitted') {
+      window.dataLayer.push({
+        'event': 'hubspot-form-success',
+        'hs-form-guid': event.data.id
+      });
+    }
+  });
+</script>
+
+
+Meeting tracker*********************
+https://speedworksocial.com/hubspot-meetings-conversion-tracking/
+<script>
+window.addEventListener( 'message', function(event) {
+  if ( event.data.meetingBookSucceeded ) {
+          window.dataLayer.push({
+        	'event': 'hubspot-meeting-booked',
+			'hs-form-guid': event.data.id
+	      });
+  }
+});
+</script>
+
+
+https://knowledge.hubspot.com/forms/how-can-i-share-a-hubspot-form-if-im-using-an-external-site#with-css-in-your-external-stylesheet-marketing-hub-professional-enterprise-or-legacy-marketing-hub-basic-only
+
+*************
+You'll want to use the form embed code instead of the form module and include in the embed an onFormSubmit fuction with the custom code you want to run.
+
+https://developers.hubspot.com/docs/methods/forms/advanced_form_options
+
+
+hbspt.forms.create({
+      portalId: '',
+      formId: '',
+      onFormSubmit: function($form) {
+        // YOUR SCRIPT HERE
+      } 
+}); 
+
+
+*************
+form was default styling.
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    region: "na1",
+    portalId: "21211512",
+    formId: "af822e36-b939-433f-8af4-04ccf9e630e3"
+  });
+</script>
+
+****************
+
+Creating a tracking url
+https://knowledge.hubspot.com/settings/how-do-i-create-a-tracking-url
+
+
+******************
+dnamic submit
+https://community.hubspot.com/t5/CMS-Development/Getting-field-value-on-form-submit/m-p/326508
+
+
+
+****************testing
+https://share.hsforms.com/1r4IuNrk5Qz-K9ATM-eYw4wcmmwo
+
+I set up a quick test in my portal, and added a form module and made sure it was set to "Display an inline thank you message". I then created a test page in HubSpot, and upon submit the eventListener previously posted printed a message to the console. The same worked in a custom module with a form field.
+
+ 
+
+window.addEventListener('message', function (event) {
+  if (event.data.type === 'hsFormCallback' && event.data.eventName === 'onFormSubmit') {
+    /* print to the console on submit, or add in custom redirect in here */
+    console.log('onFormSubmit');
+  }
+});
+
+
+
+Meetings is under sales tab******** It's for each user. !!!!data isn't sent to listener!!!!
+https://meetings.hubspot.com/jason-landau
+
+https://knowledge.hubspot.com/meetings-tool/create-and-edit-scheduling-pages#customize-your-form-questions
